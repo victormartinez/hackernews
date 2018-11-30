@@ -122,8 +122,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = config('STATIC_URL', default='/static/')
 STATICFILES_DIRS = ['hackernews/static/']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = '/media/'
+MEDIA_URL = config('MEDIA_URL', default='/media/')
 MEDIA_ROOT = BASE_DIR
+
+STATICFILES_STORAGE = config('STATICFILES_STORAGE', default='django.contrib.staticfiles.storage.StaticFilesStorage')
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')
+
+GS_ACCESS_KEY_ID = config('GS_ACCESS_KEY_ID', default=None)
+GS_SECRET_ACCESS_KEY = config('GS_SECRET_ACCESS_KEY', default=None)
+GS_BUCKET_NAME = config('GS_BUCKET_NAME', default=None)
+
