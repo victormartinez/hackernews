@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hackernews-lb
+  labels:
+    app: hackernews
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8000
+  selector:
+    app: hackernews
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: hackernews-deployment
+  labels:
+    app: hackernews
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hackernews
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hackernews
+    spec:
+      containers:
+      - name: web
+        imagePullPolicy: Always
+        image: gcr.io/playground-223020/hackernews:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENV
+          value: "develop"
+        - name: DEBUG
+          value: "True"
+        - name: ALLOWED_HOSTS
+          value: "*"
+        - name: SECRET_KEY
+          value: # <ADD-HERE-YOUR-SECRET-KEY>
+        - name: DATABASE_URL
+          value: # <ADD-HERE-YOUR-DATABASE-URL>
