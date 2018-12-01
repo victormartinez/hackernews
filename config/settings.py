@@ -131,8 +131,8 @@ MEDIA_ROOT = BASE_DIR
 STATICFILES_STORAGE = config('STATICFILES_STORAGE', default='django.contrib.staticfiles.storage.StaticFilesStorage')
 DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')
 
-GOOGLE_APPLICATION_CREDENTIALS = os.path.join(BASE_DIR, config('GOOGLE_APPLICATION_CREDENTIALS', default=None))
-GS_ACCESS_KEY_ID = config('GS_ACCESS_KEY_ID', default=None)
-GS_SECRET_ACCESS_KEY = config('GS_SECRET_ACCESS_KEY', default=None)
-GS_BUCKET_NAME = config('GS_BUCKET_NAME', default=None)
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(BASE_DIR, config('GOOGLE_APPLICATION_CREDENTIALS', default=''))
+GS_ACCESS_KEY_ID = config('GS_ACCESS_KEY_ID', default='')
+GS_SECRET_ACCESS_KEY = config('GS_SECRET_ACCESS_KEY', default='')
+GS_BUCKET_NAME = config('GS_BUCKET_NAME', default='')
 
