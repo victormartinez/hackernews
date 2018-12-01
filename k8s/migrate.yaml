@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hackernews-migrate
+spec:
+  template:
+    metadata:
+      name: hackernews-migrate
+    spec:
+      containers:
+      - name: hackernews-migrate
+        image: gcr.io/playground-223020/hackernews:latest
+        imagePullPolicy: Always
+        env:
+        - name: ENV
+          value: "production"
+        - name: DEBUG
+          value: "False"
+        - name: ALLOWED_HOSTS
+          value: "*"
+        - name: SECRET_KEY
+          value: # ADD HERE YOUR SECRET KEY
+        - name: DATABASE_URL
+          value: # ADD HERE YOUR DATABASE URL
+      restartPolicy: Never
