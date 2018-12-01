@@ -12,6 +12,7 @@ ADD . /code/
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN pip install -e 'git+https://github.com/jschneier/django-storages.git#egg=django-storages'
 
 EXPOSE 8000
 
