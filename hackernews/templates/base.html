@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'custom/css/sticky-footer-navbar.css' %}"/>
     {% endblock %}
+
+    {% block custom_css %}
+    {% endblock %}
 </head>
 <body>
 
@@ -24,7 +27,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Hackernews</a>
+        <a class="navbar-brand" href="{% url 'links:home' %}">Hackernews</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,7 +58,7 @@
               <a class="nav-link" href="#">Create an account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
+              <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
             </li>
           </ul>
         </div>
