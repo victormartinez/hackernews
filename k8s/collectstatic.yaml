@@ -27,16 +27,6 @@ spec:
             configMapKeyRef:
               name: hackernews-config
               key: hackernews.allowed_hosts
-        - name: SECRET_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: hackernews-config
-              key: hackernews.secret_key
-        - name: DATABASE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: hackernews-config
-              key: hackernews.database_url
         - name: STATICFILES_STORAGE
           valueFrom:
             configMapKeyRef:
@@ -47,25 +37,35 @@ spec:
             configMapKeyRef:
               name: hackernews-config
               key: hackernews.default_file_storage
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: hackernews-secrets
+              key: hackernews.secret_key
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: hackernews-secrets
+              key: hackernews.database_url
         - name: GS_ACCESS_KEY_ID
           valueFrom:
-            configMapKeyRef:
-              name: hackernews-config
+            secretKeyRef:
+              name: hackernews-secrets
               key: hackernews.gs_access_key_id
         - name: GS_SECRET_ACCESS_KEY
           valueFrom:
-            configMapKeyRef:
-              name: hackernews-config
+            secretKeyRef:
+              name: hackernews-secrets
               key: hackernews.gs_secret_access_key
         - name: GS_BUCKET_NAME
           valueFrom:
-            configMapKeyRef:
-              name: hackernews-config
+            secretKeyRef:
+              name: hackernews-secrets
               key: hackernews.gs_bucket_name
         - name: GOOGLE_APPLICATION_CREDENTIALS
           valueFrom:
-            configMapKeyRef:
-              name: hackernews-config
+            secretKeyRef:
+              name: hackernews-secrets
               key: hackernews.google_application_credentials
         command: [ "/bin/sh", "-c", "python manage.py collectstatic --noinput" ]
       restartPolicy: Never
