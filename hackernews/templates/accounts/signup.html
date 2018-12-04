@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'custom/css/sign-up.css' %}"/>
+{% endblock %}
+
+{% block content %}
+  <form method="post" class="form-signup">
+    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+    {% csrf_token %}
+
+    {% for field in form %}
+
+      <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label }}</label>
+      {% render_field field class='form-control' placeholder=field.label %}
+      {% for error in field.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+
+    {% endfor %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+  </form>
+{% endblock %}

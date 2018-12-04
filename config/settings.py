@@ -35,6 +35,7 @@ INSTALLED_APPS = [
 
     # Third Party
     'django_extensions',
+    'widget_tweaks',
 
     # Apps
     'hackernews.accounts',
@@ -136,3 +137,10 @@ GS_ACCESS_KEY_ID = config('GS_ACCESS_KEY_ID', default='')
 GS_SECRET_ACCESS_KEY = config('GS_SECRET_ACCESS_KEY', default='')
 GS_BUCKET_NAME = config('GS_BUCKET_NAME', default='')
 
+# Email
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = config('EMAIL_HOST', default='localhost')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
