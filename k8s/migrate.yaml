@@ -13,13 +13,23 @@ spec:
         imagePullPolicy: Always
         env:
         - name: ENV
-          value: "production"
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.env
         - name: DEBUG
-          value: "False"
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.debug
         - name: ALLOWED_HOSTS
-          value: "*"
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.allowed_hosts
         - name: SECRET_KEY
-          value: # ADD HERE YOUR SECRET KEY
-        - name: DATABASE_URL
-          value: # ADD HERE YOUR DATABASE URL
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.secret_key
       restartPolicy: Never

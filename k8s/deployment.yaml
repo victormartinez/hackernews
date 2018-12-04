@@ -41,24 +41,57 @@ spec:
         - containerPort: 8000
         env:
         - name: ENV
-          value: "production"
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.env
         - name: DEBUG
-          value: "False"
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.debug
         - name: ALLOWED_HOSTS
-          value: "*"
-        - name: STATICFILES_STORAGE
-          value: "storages.backends.gcloud.GoogleCloudStorage"
-        - name: DEFAULT_FILE_STORAGE
-          value: "storages.backends.gcloud.GoogleCloudStorage"
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.allowed_hosts
         - name: SECRET_KEY
-          value: # ADD HERE YOUR SECRET KEY
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.secret_key
         - name: DATABASE_URL
-          value: # ADD HERE YOUR DATABASE URL
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.database_url
+        - name: STATICFILES_STORAGE
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.staticfiles_storage
+        - name: DEFAULT_FILE_STORAGE
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.default_file_storage
         - name: GS_ACCESS_KEY_ID
-          value: # ADD HERE YOUR GS ACCESS KEY ID
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.gs_access_key_id
         - name: GS_SECRET_ACCESS_KEY
-          value: # ADD HERE YOUR GS SECRET ACCESS KEY
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.gs_secret_access_key
         - name: GS_BUCKET_NAME
-          value: # ADD HERE YOUR GS BUCKET NAME
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.gs_bucket_name
         - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: # ADD HERE YOUR CREDENTIALS FILE NAME
+          valueFrom:
+            configMapKeyRef:
+              name: hackernews-config
+              key: hackernews.google_application_credentials

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hackernews-config
+  namespace: default
+data:
+  hackernews.env: "production"
+  hackernews.debug: "False"
+  hackernews.allowed_hosts: "*"
+  hackernews.staticfiles_storage: "storages.backends.gcloud.GoogleCloudStorage"
+  hackernews.default_file_storage: "storages.backends.gcloud.GoogleCloudStorage"
+  hackernews.secret_key: ""
+  hackernews.database_url: ""
+  hackernews.gs_access_key_id: ""
+  hackernews.gs_secret_access_key: ""
+  hackernews.gs_bucket_name: ""
+  hackernews.google_application_credentials: ""
